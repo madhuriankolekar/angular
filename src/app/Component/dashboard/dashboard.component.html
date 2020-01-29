@@ -1,114 +1,110 @@
-<p>dashboard works!</p>
-<mat-toolbar class="docs-navbar-header">
-    <mat-toolbar-row>
-      <div class="Main">
-        <div class="sideNavIcon">
-          <div>
-  
-            <mat-icon (click)="drawer.toggle()">menu</mat-icon>
-  
-          </div>
-          <div>
-            <img src="assets/image/googlekeepicon.png">
-          </div>
-  
-          <div>Keep</div>
-  
-        </div>
-  
-        <div class="searchWhole">
-  
-  
-          <div class="searchbar">
-            <div class="searchIcon">
-              <mat-icon matSuffix>search</mat-icon>
-            </div>
-            <div>
-              <input class="input" matInput type="searchbar" placeholder="  Search...">
-            </div>
-          </div>
-  
-          <div class="appBarLastIcon">
-            <div class="refresh">
-              <div id="refreshbutton" mat-icon-button>
-                <mat-icon>refresh</mat-icon>
-              </div>
-              <div mat-icon-button>
-                <mat-icon>
-                  view_agenda
-                </mat-icon>
-              </div>
-            </div>
-  
-  
-            <div mat-icon-button>
-              <mat-icon>
-                account_circle
-              </mat-icon>
-            </div>
-  
-          </div>
-        </div>
-      </div>
-    </mat-toolbar-row>
-  
-  </mat-toolbar>
-  
-  
-  
-  
-   <div>
-    <router-outlet></router-outlet>
-  </div> 
-  
-   <div class="sidenavdiv">
-    <mat-drawer-container class="example-container" autosize>
-      <mat-drawer #drawer class="example-sidenav" mode="side">
-        <div class="maindiv">
-  
-  
-          <div class="notesdiv">
-  
-            <div class="notes" routerLink="notes">
-              <img src="assets/icon/emoji_objects-24px.svg">
-              Notes
-            </div>
-  
-            <div class="remainder">
-              <img src="assets/icon/notifications_none-24px.svg">
-              Remainder
-            </div>
-  
-          </div>
-          
-          <div class="lebelmain">
-  
-            <div>
-              LABELS
-            </div>
-  
-            <div>
-              <img src="assets/icon/edit-24px.svg">
-              Edit labels
-            </div>
-  
-          </div>
-  
-          <div class="trashmain">
-            <div class="archieve">
-                <img src="assets/icon/archive-24px.svg">
-                Archive
-            </div>
-            <div class="trash">
-                <img src="assets/icon/restore_from_trash-24px.svg">
-                Trash
-            </div>
-          </div>
-        </div>
-      </mat-drawer>
-      <div>
-        <router-outlet></router-outlet>
-      </div>
-    </mat-drawer-container>
+<mat-toolbar class="toolbar">
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      <mat-icon matSuffix>menu</mat-icon>
+    </button>
   </div>
-   
+  <span><img src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png"></span>
+  <span>
+    <p>Fundoo</p>
+  </span>
+
+
+  <div fxLayout="row" fxLayoutAlign="center center" fxFlex.xs="20" fxFlex="20" class="search">
+
+    <button margin="10px" mat-icon-button fxHide.xs="true">
+    <mat-icon>search  </mat-icon>
+    </button>
+   <input matTooltip="Search" placeholder="Search" class="input" [(ngModel)]="search" (keyup)="lookup()" >
+   <img src="../../../assets/iconImages//search-24px (1).svg">
+    <button margin="80px" mat-icon-button fxHide.xs="true">
+         
+    </button>
+  </div>
+  
+  <span><button margin="14px" mat-icon-button fxHide.xs="true" (click)="ngOnInit()">
+      <i class="material-icons">
+        
+        <img src="../../../assets/iconImages//refresh-24px.svg">
+      </i>
+    </button></span>
+  <button margin="14px" mat-icon-button fxHide.xs="true">
+    <mat-icon>dashboard</mat-icon>
+  </button>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <div>
+      <img mat-card-avatar src="{{pic}}" class="profile1" /></div>
+  </button>
+  <div>
+
+
+    <mat-menu #menu="matMenu">
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+        <mat-card style="overflow: hidden">
+          <div class="image-container" style="padding-top: 50%;">
+            <img class="topic-avatar" mat-card-avatar src={{pic}}>
+
+          </div>
+          <!-- <div class="name">{{}}</div>
+          <div class="email">{{}}</div> -->
+        </mat-card>
+      </div>
+      <mat-divider></mat-divider>
+
+      <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-around  center">
+        <button style="left: 30%" mat-raised-button (click)="logout()">Sign out</button>
+      </div>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize>
+  <div>
+    <mat-drawer #drawer class="example-sidenav" mode="side"> 
+      <mat-list class="sidebarlist">
+        <mat-list-item  routerLink="main"><img src="../../../assets/iconImages//emoji_objects-24px.svg">Notes
+            <i class="material-icons" style="align-self:initial">
+
+             </i>
+        </mat-list-item>
+
+
+
+        <mat-list-item  routerLink="main"><img src="../../../assets//iconImages//add_alert-24px.svg">Reminders </mat-list-item>
+        <mat-divider></mat-divider>
+        <h6 style="color: grey">LABELS</h6>
+        <mat-list-item routerLink="main"><img src="../../../assets//iconImages//edit-24px.svg"><i class="material-icons">
+              </i> Edit labels</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item> <button mat-button class="nav-button" (click)="getArchivededNotes()"><img src="../../../assets//iconImages//archive-24px.svg">
+            <mat-icon matSuffix></mat-icon> Archive
+          </button>
+        </mat-list-item>
+        <mat-list-item>
+          <button mat-button class="nav-button" (click)="getTrash()">
+            <mat-icon matSuffix></mat-icon>Trash
+          </button>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-drawer>
+  </div>
+  <!-- <div>
+     <mat-card class ="border">
+        <input placeholder="Take a note..." class="input" (click)=card.toggle()><i class="material-icons">
+            check_box
+            </i>
+        <i class="material-icons" style="margin-left:10px ">
+          brush
+          </i><i class="material-icons">
+              image
+              </i>
+      </mat-card> 
+  </div>
+  <app-notes></app-notes>
+  <div *ngFor="let item of Notes; let i = index">
+    <app-note-card ></app-note-card>
+  </div> -->
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</mat-drawer-container>

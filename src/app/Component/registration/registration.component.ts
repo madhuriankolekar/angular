@@ -13,11 +13,11 @@ import { UserserviceService } from 'src/app/service/userservice.service';
 export class RegistrationComponent implements OnInit {
 
   registerForm = new FormGroup({
-    firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      emailId: new FormControl(''),
+    fname: new FormControl(''),
+      Lname: new FormControl(''),
+      email: new FormControl(''),
       password: new FormControl(''),
-      mobileNumber: new FormControl('')
+      //mobileNumber: new FormControl('')
     })
   constructor(
        private userservice: UserserviceService,
@@ -30,15 +30,22 @@ ngOnInit() {
        
      }
 
-     onSubmit(form: NgForm) {
+     onSubmit() {
       if (this.registerForm.invalid) {
         return;
       }
       console.log(this.registerForm.value);
+      const data={
+        "fname": this.registerForm.get('fname').value,
+         "Lname":this.registerForm.get('Lname').value,
+         "email": this.registerForm.get('email').value,
+         "password":this.registerForm.get('password').value,
+     }
     
-      this.userservice.registration(this.registerForm.value).subscribe((user) => {
-        console.log(user);
+      this.userservice.registration(data).subscribe((user) => {
+        console.log("hello"+user);
        this.snackbar.open('registration successfully verify by email', 'Ok', { duration: 3000 });
+
     
       },
         (error: any) => {

@@ -24,7 +24,7 @@ private API_URL=environment.apiUrl;
 
   registration(user: any):Observable<any>{
     console.log(user);
-    return this.http.post<any>(this.API_URL + 'users/register',user, this.httpOptions);
+    return this.http.post<any>(this.API_URL +'users/register',user, this.httpOptions);
   }
   forgetpassword(user:any):Observable<any>{
     console.log(user);
@@ -34,4 +34,5 @@ private API_URL=environment.apiUrl;
   resetPassword(user: any):Observable<any> {
     return this.http.post<any>(this.API_URL + 'users/resetpassword', user);
   }
+  
 }

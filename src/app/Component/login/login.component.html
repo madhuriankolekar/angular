@@ -1,7 +1,8 @@
 <div class="main-div">
   <mat-card class="matCard" style="box-shadow: 1px 1px 7px 0px;">
     <form [formGroup]="loginForm">
-      <div >
+      
+        <div>
 <div fxLayout="row" fxLayoutAlign="center center" style="font-size:24px; margin-bottom: 25px;">
               <span style="color: red;">F</span>
               <span style="color: red;">u</span>
@@ -33,13 +34,17 @@
           <div>
             <a routerLink="/registration">signUp</a>
           </div>
+         
           <div>
-              <button mat-raised-button (click)="onSubmit()">LogIn</button>
+
+ <button mat-raised-button (click)="onSubmit()">LogIn</button>
+
           </div>
       </div>
 <div class="forgot" >
           <a routerLink="/forgotpassword">Forgot Password</a>
       </div>
+      <a routerLink="/dashboard">login</a> 
     </form>
   </mat-card>
 </div>

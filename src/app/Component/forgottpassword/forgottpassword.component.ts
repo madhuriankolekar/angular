@@ -26,6 +26,7 @@ constructor(private userservice:UserserviceService,
   onSubmit(form: NgForm) {
     if (this.forgetPassword.invalid) {
         return;
+
    }
     console.log(this.forgetPassword.value);
    
@@ -36,7 +37,7 @@ constructor(private userservice:UserserviceService,
    },
    (error: any) => {
        console.log( error);
-       this.snackbar.open(error.error.description, 'error', {duration: 3000});
+       this.snackbar.open('error.error.description', 'error', {duration: 3000});
    });
    }
 

@@ -8,12 +8,18 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {  MatInputModule, MatSnackBarModule, MatIconModule, MatToolbarModule, MatSidenavModule, MatButtonModule, MatExpansionModule, MatTabsModule, MatCheckboxModule, MatListModule, MatButtonToggleModule, MatOptionModule, MatSelectModule, MatMenuModule } from '@angular/material';
+import {  MatInputModule, MatSnackBarModule, MatToolbarModule, MatSidenavModule, MatButtonModule, MatExpansionModule, MatTabsModule, MatCheckboxModule, MatListModule, MatButtonToggleModule, MatOptionModule, MatSelectModule, MatMenuModule, MatTooltipModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForgottpasswordComponent } from './Component/forgottpassword/forgottpassword.component';
 import { ResetpasswordComponent } from './Component/resetpassword/resetpassword.component';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { CreatenoteComponent } from './Component/createnote/createnote.component';
+import { MainComponent } from './main/main.component';
+import {MatIconModule} from '@angular/material/icon'
+///import { NotesComponent } from './Component/notes/notes.component';
+import { NoteCardComponent } from './Component/note-card/note-card.component';
+import { EditNoteComponent } from './Component/edit-note/edit-note.component';
 
 
 @NgModule({
@@ -25,24 +31,30 @@ import { LayoutModule } from '@angular/cdk/layout';
     ForgottpasswordComponent,
     ResetpasswordComponent,
     DashboardComponent,
+
+    CreatenoteComponent,
+    MainComponent,  
+    NoteCardComponent, 
+    EditNoteComponent
     
     
   ],
   imports: [
-    MatSnackBarModule,MatSidenavModule,
+    MatSnackBarModule, MatSidenavModule,
     AppRoutingModule,
     MatCardModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
     FormsModule, MatToolbarModule,
-    MatExpansionModule, MatTabsModule, MatCheckboxModule, MatIconModule,
+    MatExpansionModule, MatTabsModule, MatCheckboxModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatListModule,
     MatButtonToggleModule,
-    LayoutModule,MatOptionModule,MatSelectModule,MatMenuModule
+    LayoutModule, MatOptionModule, MatSelectModule, MatMenuModule,MatIconModule,
+    MatDialogModule, MatTooltipModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

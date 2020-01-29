@@ -1,0 +1,14 @@
+<p> hey note-card works!</p>
+<div class="divClass">
+    <mat-card class="mat-card" *ngFor="let note of notes" [style.backgroundColor]="note.color">
+      <div (click)="dialog(note)">
+        <div class="text_break">{{note.title}}
+        </div>
+        <div class="text_break">
+          {{note.description}}</div>
+      </div>
+     <!-- <mat-card-actions>
+        <app-icon class="icons" [noteId]="note" (archiveEvent)="afterArchive($event)"></app-icon>
+      </mat-card-actions>--> 
+    </mat-card>
+  </div>
